@@ -684,8 +684,15 @@ def apply_sell(state: dict, symbol: str, price: float, reason: str, when: str) -
     notional = qty * price
     fee = notional * FEE_RATE
     proceeds = notional - fee
-    # L'enveloppe de 1 000 $ a été entièrement mobilisée à l'achat.
-    pnl = proceeds - ALLOCATION
+    # Coût réel de *cette* position (qty d'entrée × prix d'entrée).
+    # On n'utilise pas ALLOCATION : dès le 2e aller-retour, le cash
+    # réinvesti n'est plus forcément égal à l'enveloppe initiale de 1 000 $.
+    # Les frais sont à 0 %, donc cost_basis == cash mobilisé à l'achat.
+    entry_price = asset.get("entry_price")
+    if entry_price is None:
+        raise RuntimeError(f"Vente {symbol} sans prix d'entrée (état incohérent)")
+    cost_basis = qty * float(entry_price)
+    pnl = proceeds - cost_basis
     asset["realized_pnl"] = float(asset.get("realized_pnl") or 0.0) + pnl
     asset["cash"] = proceeds
     asset["qty"] = 0.0
