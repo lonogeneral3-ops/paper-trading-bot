@@ -4,7 +4,7 @@
   "ends_at": "2026-11-30T22:40:13+01:00",
   "data_source": "Binance.US + Yahoo Finance",
   "data_source_note": "api.binance.com renvoyait HTTP 451 (restriction géographique) ; source principale : api.binance.us, endpoint public /api/v3/klines, sans clé API. Repli : api.binance.com, puis Kraken public OHLC (intervalle 60 min).",
-  "strategy": "RSI (survente / surachat) (periode=14, bas=30, haut=70) · bougies 1h",
+  "strategy": "Croisement de moyennes EMA (rapide=20, lente=50) · bougies 1h",
   "strategy_doc": "Moyennes mobiles exponentielles 20 et 50 sur bougies d'une heure, positions longues uniquement, sans effet de levier. Achat si EMA20 > EMA50 et qu'on n'est pas déjà investi (y compris si la tendance est déjà haussière, pas seulement sur un nouveau croisement). Vente si EMA20 < EMA50. Sans frais (0 %). Décisions prises à la clôture de la bougie 1h, au prix de clôture.",
   "entry_if_trend_already_up": true,
   "initial_capital": 19000.0,
@@ -699,15 +699,34 @@
         }
       },
       "by": "workflow Changer de stratégie"
+    },
+    {
+      "time": "2026-11-23T23:47:34+01:00",
+      "scope": "tous",
+      "old": {
+        "id": "rsi",
+        "params": {
+          "periode": 14,
+          "bas": 30,
+          "haut": 70
+        }
+      },
+      "new": {
+        "id": "ema",
+        "params": {
+          "rapide": 20,
+          "lente": 50
+        }
+      },
+      "by": "workflow Changer de stratégie"
     }
   ],
   "strategy_current": {
     "global": {
-      "id": "rsi",
+      "id": "ema",
       "params": {
-        "periode": 14,
-        "bas": 30,
-        "haut": 70
+        "rapide": 20,
+        "lente": 50
       }
     },
     "overrides": {}
