@@ -1,0 +1,83 @@
+name: Changer de stratégie
+
+# Argent 100 % fictif. Ce bouton change seulement les règles du bot de simulation.
+# Les positions sont gardées, l'historique n'est pas effacé, et le changement est noté
+# dans data/state.json. Les nouvelles règles s'appliquent dès la prochaine bougie 1h.
+
+on:
+  workflow_dispatch:
+    inputs:
+      strategie:
+        description: "Nouvelle stratégie"
+        type: choice
+        required: true
+        default: "ema — Croisement de moyennes EMA (stratégie d'origine)"
+        options:
+          - "ema — Croisement de moyennes EMA (stratégie d'origine)"
+          - "rsi — RSI : acheter quand ça a beaucoup baissé, vendre quand ça a beaucoup monté"
+          - "boll — Cassure de Bollinger"
+          - "macd — MACD"
+          - "dca — Achat régulier (sans jamais revendre)"
+          - "bh — Acheter et garder"
+          - "global — (pour un seul actif) revenir à la stratégie de tous les autres"
+      actif:
+        description: "Pour quel actif ? (tous = tout le portefeuille)"
+        type: choice
+        required: true
+        default: "tous"
+        options: [tous, BTC, ETH, SOL, BNB, XRP, ADA, DOGE, AVAX, LINK, DOT, "S&P 500", "Nasdaq 100", "CAC 40", Apple, Nvidia, Microsoft, Tesla, LVMH, TotalEnergies]
+      parametres:
+        description: "Réglages (facultatif, vide = réglages par défaut). Ex : rapide=20 lente=50 · periode=14 bas=30 haut=70 · periode=20 ecart=2 · rapide=12 lente=26 signal=9 · n=7"
+        type: string
+        required: false
+        default: ""
+      essai:
+        description: "Essai seulement (ne rien enregistrer)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: paper-bot-cycle
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  change:
+    name: Changer la stratégie (argent fictif)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Appliquer le changement
+        env:
+          STRATEGIE: ${{ inputs.strategie }}
+          ACTIF: ${{ inputs.actif }}
+          PARAMS: ${{ inputs.parametres }}
+          ESSAI: ${{ inputs.essai }}
+        run: |
+          set -euo pipefail
+          SID="${STRATEGIE%% *}"
+          EXTRA=""
+          if [ "$ESSAI" = "true" ]; then EXTRA="--dry-run"; fi
+          python change_strategy.py --strategie "$SID" --actif "$ACTIF" --parametres "$PARAMS" $EXTRA | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Enregistrer
+        if: ${{ !inputs.essai }}
+        run: |
+          set -euo pipefail
+          git config user.name "lonogeneral3-ops"
+          git config user.email "360435022+lonogeneral3-ops@users.noreply.github.com"
+          git add config.json data/state.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+          else
+            git commit -m "Changement de stratégie : ${{ inputs.actif }} → ${{ inputs.strategie }} [skip ci]"
+            git pull --rebase --autostash
+            git push
+          fi

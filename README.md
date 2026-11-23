@@ -1,56 +1,57 @@
 # Paper bot — trading fictif
 
-Bot de paper trading qui suit, pendant une semaine, une stratégie simple
-(EMA 20/50 sur bougies d'une heure) sur 10 cryptos, avec 10 000 $ fictifs.
+Bot de paper trading qui suit une stratégie simple sur des cryptos, des actions et des
+indices boursiers, avec des **enveloppes fictives de 1 000 $ par actif**.
 
 **Argent 100 % fictif. Aucun compte, aucune clé API, aucun ordre réel.
 Ceci n'est pas un conseil en investissement.**
 
-- Tableau de bord public (GitHub Pages) :
-  <https://lonogeneral3-ops.github.io/paper-trading-bot/>
-- Dépôt : <https://github.com/lonogeneral3-ops/paper-trading-bot>
+- Tableau de bord : <https://lonogeneral3-ops.github.io/paper-trading-bot/>
+  (le même que le fichier local `mon-dashboard-trading.html`)
 - Compte GitHub utilisé : `lonogeneral3-ops`
 
-Le bot tourne chaque heure via GitHub Actions (cron `7 * * * *`, plus lancement manuel).
-Chaque cycle rattrape les bougies 1h closes pas encore traitées, met à jour l'état
-et republie le tableau de bord. Après le 30 novembre 2026 à 22:40 (Europe/Paris),
-plus aucun trade n'est passé.
+## Fonctionnement
 
-## Stratégie
+Le bot tourne chaque heure via GitHub Actions (`Paper trading bot`, cron `7 * * * *`,
+plus lancement manuel). Chaque passage traite les bougies 1h **terminées** pas encore vues,
+au prix de clôture, puis enregistre `data/state.json`, `data/trades.csv`, `data/equity.csv`.
+Après le 30 novembre 2026 à 22:40 (heure de Paris), plus aucun trade n'est passé.
 
-- Univers : BTC, ETH, SOL, BNB, XRP, ADA, DOGE, AVAX, LINK, DOT (contre USDT)
-- 1 000 $ fictifs par crypto, sans effet de levier
-- Sans frais (0 % à l'achat comme à la vente)
-- Achat si EMA 20 > EMA 50 (même si la tendance est déjà haussière, pas seulement
-  sur un nouveau croisement)
-- Vente si EMA 20 < EMA 50
-- Décision à la clôture de chaque bougie 1h, au prix de clôture
-- Début : 23 novembre 2026, 22:40 (Europe/Paris)
-- Fin : 30 novembre 2026, 22:40 (Europe/Paris)
+- Cryptos (BTC, ETH, SOL, BNB, XRP, ADA, DOGE, AVAX, LINK, DOT) : Binance.US
+  (repli Binance, puis Kraken), 24 h/24.
+- Actions (Apple, Nvidia, Microsoft, Tesla, LVMH, TotalEnergies) et indices
+  (S&P 500 `^GSPC`, Nasdaq 100 `^NDX`, CAC 40 `^FCHI`) : Yahoo Finance, API publique
+  « chart ». Il n'y a des bougies que pendant les heures de Bourse : aucun trade la nuit
+  ni le week-end. Les indices sont simulés comme s'ils s'achetaient directement.
+  Les cours en € font varier l'enveloppe de 1 000 $ du même pourcentage (sans change).
+- Le bot publie aussi `data/market/*.json` (historique Yahoo, toutes les 6 h) pour le
+  testeur de stratégies du tableau de bord, car Yahoo ne se lit pas depuis un fichier local.
 
-## Données de marché
+## Réglages : `config.json`
 
-Source principale : `https://api.binance.us/api/v3/klines` (publique, sans authentification).
+- `strategy` : stratégie globale (`id` + `params`).
+- `assets` : liste des actifs (ajouter une ligne = nouvelle enveloppe fictive, qui commence
+  à trader à la bougie suivante). `strategy` d'un actif = exception pour cet actif.
 
-Si cette API est bloquée (HTTP 451 / restriction géographique), le bot essaie dans l'ordre :
+## Changer de stratégie (sans code)
 
-1. `https://api.binance.com/api/v3/klines`
-2. `https://api.kraken.com/0/public/OHLC` (intervalle 60 minutes, toutes les paires de l'univers y compris BNB et DOGE/XDG)
+Onglet **Actions** → **Changer de stratégie** → **Run workflow**, choisir la stratégie,
+l'actif (« tous » ou un seul) et éventuellement les réglages, puis **Run workflow**.
+Lien direct : <https://github.com/lonogeneral3-ops/paper-trading-bot/actions/workflows/change-strategy.yml>
 
-Aucune clé n'est stockée dans ce dépôt.
+Rien n'est effacé : les positions sont gardées, le changement est noté dans
+`data/state.json` (`strategy_changes`), et les nouvelles règles s'appliquent aux bougies
+qui se terminent après le changement.
 
-## Fichiers d'état
+## Stratégies (`strategies.py`, mêmes règles que le testeur du tableau de bord)
 
-- `data/state.json` — positions, cash, historique (reprise après un run manqué)
-- `data/trades.csv` et `data/equity.csv`
-- `dashboard/index.html` et `docs/index.html` — tableau de bord statique autonome
-- `equity.png` — courbe du capital
+| id | Nom | Réglages par défaut | Règle |
+|---|---|---|---|
+| `ema` | Croisement EMA | rapide=20 lente=50 | investi tant que EMA rapide > EMA lente, vend quand elle passe dessous |
+| `rsi` | RSI | periode=14 bas=30 haut=70 | achète si RSI < bas, vend si RSI > haut |
+| `boll` | Cassure de Bollinger | periode=20 ecart=2 | achète si prix > bande haute, vend si prix < moyenne |
+| `macd` | MACD | rapide=12 lente=26 signal=9 | investi si MACD > signal, vend sinon |
+| `dca` | Achat régulier | n=7 | n achats égaux du cash restant, répartis jusqu'à la fin, jamais de vente |
+| `bh` | Acheter et garder | — | achète tout le cash, ne revend jamais |
 
-## Commandes locales (optionnel)
-
-```bash
-./venv/bin/python bot.py --once   # un cycle, avec rattrapage
-./venv/bin/python report.py       # rapport + graphique
-./start.sh / ./stop.sh / ./restart.sh
-./serve.sh                        # http://127.0.0.1:8765/
-```
+Sans frais (0 %). Positions longues uniquement, sans effet de levier.

@@ -1,0 +1,232 @@
+{
+  "_aide": "Réglages du bot (argent 100 % fictif). Pour changer de stratégie sans toucher au code : onglet Actions du dépôt → « Changer de stratégie » → Run workflow. Tu peux aussi modifier ce fichier à la main : la stratégie globale est dans 'strategy', une stratégie propre à un actif se met dans 'strategy' de l'actif (sinon null). Pour ajouter un actif, copie une ligne de 'assets' (source 'binance' pour une crypto en USDT, 'yahoo' pour une action ou un indice, symbole Yahoo Finance). Chaque nouvel actif reçoit sa propre enveloppe fictive.",
+  "version": 2,
+  "timeframe": "1h",
+  "fee_rate": 0.0,
+  "strategy": {
+    "id": "ema",
+    "params": {
+      "rapide": 20,
+      "lente": 50
+    }
+  },
+  "strategies_disponibles": [
+    "ema",
+    "rsi",
+    "boll",
+    "macd",
+    "dca",
+    "bh"
+  ],
+  "assets": [
+    {
+      "key": "BTCUSDT",
+      "label": "BTC",
+      "name": "Bitcoin",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "BTCUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "ETHUSDT",
+      "label": "ETH",
+      "name": "Ethereum",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "ETHUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "SOLUSDT",
+      "label": "SOL",
+      "name": "Solana",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "SOLUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "BNBUSDT",
+      "label": "BNB",
+      "name": "BNB",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "BNBUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "XRPUSDT",
+      "label": "XRP",
+      "name": "XRP",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "XRPUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "ADAUSDT",
+      "label": "ADA",
+      "name": "Cardano",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "ADAUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "DOGEUSDT",
+      "label": "DOGE",
+      "name": "Dogecoin",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "DOGEUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "AVAXUSDT",
+      "label": "AVAX",
+      "name": "Avalanche",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "AVAXUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "LINKUSDT",
+      "label": "LINK",
+      "name": "Chainlink",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "LINKUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "DOTUSDT",
+      "label": "DOT",
+      "name": "Polkadot",
+      "group": "crypto",
+      "source": "binance",
+      "symbol": "DOTUSDT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "SPX",
+      "label": "S&P 500",
+      "name": "500 plus grandes entreprises américaines",
+      "group": "indice",
+      "source": "yahoo",
+      "symbol": "^GSPC",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "NDX",
+      "label": "Nasdaq 100",
+      "name": "100 grandes entreprises tech américaines",
+      "group": "indice",
+      "source": "yahoo",
+      "symbol": "^NDX",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "CAC40",
+      "label": "CAC 40",
+      "name": "40 plus grandes entreprises françaises",
+      "group": "indice",
+      "source": "yahoo",
+      "symbol": "^FCHI",
+      "currency": "EUR",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "AAPL",
+      "label": "Apple",
+      "name": "Apple",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "AAPL",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "NVDA",
+      "label": "Nvidia",
+      "name": "Nvidia",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "NVDA",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "MSFT",
+      "label": "Microsoft",
+      "name": "Microsoft",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "MSFT",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "TSLA",
+      "label": "Tesla",
+      "name": "Tesla",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "TSLA",
+      "currency": "USD",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "LVMH",
+      "label": "LVMH",
+      "name": "LVMH (Louis Vuitton…)",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "MC.PA",
+      "currency": "EUR",
+      "envelope": 1000,
+      "strategy": null
+    },
+    {
+      "key": "TTE",
+      "label": "TotalEnergies",
+      "name": "TotalEnergies",
+      "group": "action",
+      "source": "yahoo",
+      "symbol": "TTE.PA",
+      "currency": "EUR",
+      "envelope": 1000,
+      "strategy": null
+    }
+  ]
+}
