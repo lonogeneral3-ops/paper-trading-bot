@@ -3,7 +3,7 @@
   "started_at": "2026-11-23T22:40:13+01:00",
   "ends_at": "2026-11-30T22:40:13+01:00",
   "data_source": "https://api.binance.us/api/v3/klines",
-  "data_source_note": "api.binance.com renvoyait HTTP 451 (restriction géographique) ; repli sur api.binance.us, endpoint public /api/v3/klines, sans clé API.",
+  "data_source_note": "api.binance.com renvoyait HTTP 451 (restriction géographique) ; source principale : api.binance.us, endpoint public /api/v3/klines, sans clé API. Repli : api.binance.com, puis Kraken public OHLC (intervalle 60 min).",
   "strategy": "EMA 20/50, bougies 1h, long only",
   "strategy_doc": "Moyennes mobiles exponentielles 20 et 50 sur bougies d'une heure, positions longues uniquement, sans effet de levier. Achat si EMA20 > EMA50 et qu'on n'est pas déjà investi (y compris si la tendance est déjà haussière, pas seulement sur un nouveau croisement). Vente si EMA20 < EMA50. Sans frais (0 %). Décisions prises à la clôture de la bougie 1h, au prix de clôture.",
   "entry_if_trend_already_up": true,
@@ -25,79 +25,79 @@
     "LINKUSDT",
     "DOTUSDT"
   ],
-  "last_processed_candle_open_ms": 1795464000000,
-  "last_processed_candle_close_paris": "2026-11-23T21:59:59+01:00",
-  "last_run_at": "2026-11-23T22:40:13+01:00",
+  "last_processed_candle_open_ms": 1795467600000,
+  "last_processed_candle_close_paris": "2026-11-23T22:59:59+01:00",
+  "last_run_at": "2026-11-23T23:01:03+01:00",
   "last_prices": {
-    "BTCUSDT": 61236.01,
-    "ETHUSDT": 1725.36,
-    "SOLUSDT": 72.82,
-    "BNBUSDT": 557.03,
-    "XRPUSDT": 0.9374,
-    "ADAUSDT": 0.1476,
+    "BTCUSDT": 61342.54,
+    "ETHUSDT": 1724.29,
+    "SOLUSDT": 72.39,
+    "BNBUSDT": 557.61,
+    "XRPUSDT": 0.9426,
+    "ADAUSDT": 0.14812,
     "DOGEUSDT": 0.05659,
-    "AVAXUSDT": 6.793,
-    "LINKUSDT": 8.987,
+    "AVAXUSDT": 6.816,
+    "LINKUSDT": 9.0,
     "DOTUSDT": 0.685
   },
   "last_signals": {
     "BTCUSDT": {
-      "ema_fast": 61623.65145476641,
-      "ema_slow": 61144.39043145599,
+      "ema_fast": 61596.87893550351,
+      "ema_slow": 61152.21236979803,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 61236.01
+      "close": 61342.54
     },
     "ETHUSDT": {
-      "ema_fast": 1738.0651127431186,
-      "ema_slow": 1721.055428844187,
+      "ema_fast": 1736.7531972571746,
+      "ema_slow": 1721.1848367523378,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 1725.36
+      "close": 1724.29
     },
     "SOLUSDT": {
-      "ema_fast": 72.99512473400266,
-      "ema_slow": 71.84582358455866,
+      "ema_fast": 72.93749380696427,
+      "ema_slow": 71.86717219650531,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 72.82
+      "close": 72.39
     },
     "BNBUSDT": {
-      "ema_fast": 560.0446601692778,
-      "ema_slow": 556.8210357744993,
+      "ema_fast": 559.8127877740525,
+      "ema_slow": 556.852305190904,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 557.03
+      "close": 557.61
     },
     "XRPUSDT": {
-      "ema_fast": 0.9495770128361599,
-      "ema_slow": 0.9398877691461304,
+      "ema_fast": 0.9489125354290474,
+      "ema_slow": 0.9399943755823846,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 0.9374
+      "close": 0.9426
     },
     "ADAUSDT": {
-      "ema_fast": 0.14831749459369323,
-      "ema_slow": 0.14654520888038933,
+      "ema_fast": 0.14829868558552253,
+      "ema_slow": 0.14660708068092182,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 0.1476
+      "close": 0.14812
     },
     "DOGEUSDT": {
-      "ema_fast": 0.05654601590392103,
-      "ema_slow": 0.05592382787262891,
+      "ema_fast": 0.056550204865951026,
+      "ema_slow": 0.05595001658491341,
       "bullish": true,
       "bearish": false,
       "crossover": false,
@@ -105,26 +105,26 @@
       "close": 0.05659
     },
     "AVAXUSDT": {
-      "ema_fast": 6.806071773488815,
-      "ema_slow": 6.736109994266856,
+      "ema_fast": 6.807017318993425,
+      "ema_slow": 6.7392510675595005,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 6.793
+      "close": 6.816
     },
     "LINKUSDT": {
-      "ema_fast": 9.005468394416216,
-      "ema_slow": 8.879986499323156,
+      "ema_fast": 9.004947595082912,
+      "ema_slow": 8.884698298340785,
       "bullish": true,
       "bearish": false,
       "crossover": false,
       "crossunder": false,
-      "close": 8.987
+      "close": 9.0
     },
     "DOTUSDT": {
-      "ema_fast": 0.682508289652484,
-      "ema_slow": 0.6733891425008276,
+      "ema_fast": 0.682745595402946,
+      "ema_slow": 0.6738446441252209,
       "bullish": true,
       "bearish": false,
       "crossover": false,
@@ -432,6 +432,16 @@
       "cash_total": 0.0,
       "positions_value": 10000.0,
       "unrealized_pnl": 0.0,
+      "realized_pnl": 0.0
+    },
+    {
+      "time": "2026-11-23T22:59:59+01:00",
+      "candle_open_ms": 1795467600000,
+      "equity": 10010.158433475268,
+      "buy_and_hold_equity": 10010.158433475268,
+      "cash_total": 0.0,
+      "positions_value": 10010.158433475268,
+      "unrealized_pnl": 10.158433475267884,
       "realized_pnl": 0.0
     }
   ]
