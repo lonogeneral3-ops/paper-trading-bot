@@ -27,7 +27,7 @@
   ],
   "last_processed_candle_open_ms": 1795467600000,
   "last_processed_candle_close_paris": "2026-11-23T22:59:59+01:00",
-  "last_run_at": "2026-11-23T23:46:13+01:00",
+  "last_run_at": "2026-11-23T23:55:31+01:00",
   "last_prices": {
     "BTCUSDT": 61342.54,
     "ETHUSDT": 1724.29,
@@ -737,8 +737,8 @@
   ],
   "data_errors": {},
   "summary": {
-    "time": "2026-11-23T23:46:03+01:00",
-    "time_ms": 1795473963173,
+    "time": "2026-11-23T23:55:19+01:00",
+    "time_ms": 1795474519146,
     "equity": 19010.15843347527,
     "buy_and_hold_equity": 19010.15843347527,
     "capital": 19000.0,
