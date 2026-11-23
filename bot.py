@@ -10,7 +10,9 @@ Bot de paper trading — argent 100 % FICTIF, aucun compte, aucun ordre réel.
      à ce moment-là (voir strategies.py) au prix de clôture ;
   4. enregistre l'état (data/state.json + CSV).
 
-Chaque actif a sa propre enveloppe fictive (1 000 $ par défaut). Un actif ajouté dans
+Chaque actif a sa propre enveloppe fictive (1 000 € par défaut). Le rendement en % de chaque
+actif (coté en $ ou en €) est appliqué à son enveloppe en euros, sans conversion de change.
+Au départ tout est en cash : le bot n'achète que sur un NOUVEAU signal d'achat. Un actif ajouté dans
 config.json reçoit une nouvelle enveloppe et commence à trader à la bougie suivante.
 Changer de stratégie ne réinitialise rien : les positions sont gardées et les nouvelles
 règles s'appliquent aux bougies qui se terminent après le changement.
@@ -153,7 +155,7 @@ def migrate(state: dict, cfg: dict) -> dict:
             state["assets"][key] = {"cash": env, "qty": 0.0, "entry_price": None, "entry_time": None, "entry_fee": 0.0,
                                     "realized_pnl": 0.0, "last_open_ms": None, "last_price": None, "envelope": env,
                                     "added_at": iso(datetime.now(PARIS))}
-            log(f"Nouvel actif {key} : enveloppe fictive de {env:.0f} $")
+            log(f"Nouvel actif {key} : enveloppe fictive de {env:.0f} €")
         meta = state["assets"][key]
         meta.update({"label": a["label"], "name": a["name"], "group": a["group"], "currency": a.get("currency", "USD"),
                      "source_symbol": a["symbol"], "active": True})
@@ -162,6 +164,7 @@ def migrate(state: dict, cfg: dict) -> dict:
         if key not in active:
             a["active"] = False
     state["timeframe"] = cfg.get("timeframe", "1h")
+    state["currency"] = cfg.get("currency", "EUR")
     state["fee_rate"] = float(cfg.get("fee_rate", 0.0))
     return state
 
@@ -216,13 +219,13 @@ def trade(state, key, side, price, q, fee, notional, when, reason, strat_id):
 
 
 REASONS = {
-    ("ema", "achat"): "EMA courte au-dessus de la longue : tendance haussière",
+    ("ema", "achat"): "Croisement haussier : l'EMA courte repasse au-dessus de la longue",
     ("ema", "vente"): "EMA courte passée sous la longue : tendance baissière",
-    ("rsi", "achat"): "RSI sous le seuil bas : l'actif a beaucoup baissé",
+    ("rsi", "achat"): "Le RSI vient de passer sous le seuil bas : actif très survendu",
     ("rsi", "vente"): "RSI au-dessus du seuil haut : l'actif a beaucoup monté",
-    ("boll", "achat"): "Prix sorti par le haut de la bande de Bollinger",
+    ("boll", "achat"): "Le prix vient de sortir par le haut de la bande de Bollinger",
     ("boll", "vente"): "Prix retombé sous le milieu de la bande de Bollinger",
-    ("macd", "achat"): "MACD au-dessus de sa ligne signal : élan haussier",
+    ("macd", "achat"): "Le MACD vient de repasser au-dessus de sa ligne signal : élan haussier",
     ("macd", "vente"): "MACD sous sa ligne signal : élan qui faiblit",
     ("bh", "achat"): "Acheter et garder : achat, puis on ne revend plus",
 }
@@ -396,8 +399,8 @@ def main() -> int:
     state["strategy"] = describe(state["strategy_current"]["global"]) + " · bougies 1h"
     write_json(STATE_PATH, state)
     write_csvs(state)
-    log(f"{len(events)} bougie(s) traitée(s), {n_trades} ordre(s) fictif(s). Capital fictif : {cur['equity']:.2f} $ "
-        f"sur {cur['capital']:.0f} $ d'enveloppes (gain {cur['equity'] - cur['capital']:+.2f} $).")
+    log(f"{len(events)} bougie(s) traitée(s), {n_trades} ordre(s) fictif(s). Capital fictif : {cur['equity']:.2f} € "
+        f"sur {cur['capital']:.0f} € d'enveloppes (gain {cur['equity'] - cur['capital']:+.2f} €).")
     if not args.no_market_cache:
         refresh_market_cache(cfg)
     try:

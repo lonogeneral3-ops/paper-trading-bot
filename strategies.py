@@ -86,24 +86,45 @@ def RSI(v: list[float], n: int) -> list[float | None]:
 
 # --- Signaux ---------------------------------------------------------------------
 
+def _cross_up(a, b, i):
+    """Vrai si a passe AU-DESSUS de b à la bougie i (nouveau signal, pas une tendance déjà en place)."""
+    return (i > 0 and a[i] is not None and b[i] is not None and a[i - 1] is not None and b[i - 1] is not None
+            and a[i - 1] <= b[i - 1] and a[i] > b[i])
+
+
 def signaux_ema(c, p, ctx):
+    # Achat seulement au moment du croisement haussier ; vente dès que la courte repasse sous la longue.
     f, s = EMA(c, p["rapide"]), EMA(c, p["lente"])
-    return [None if f[i] is None or s[i] is None else "achat" if f[i] > s[i] else "vente" if f[i] < s[i] else None
+    return ["achat" if _cross_up(f, s, i) else
+            "vente" if f[i] is not None and s[i] is not None and f[i] < s[i] else None
             for i in range(len(c))]
 
 
 def signaux_rsi(c, p, ctx):
+    # Achat quand le RSI PASSE sous le seuil bas ; vente quand il est au-dessus du seuil haut.
     r = RSI(c, p["periode"])
-    return [None if x is None else "achat" if x < p["bas"] else "vente" if x > p["haut"] else None for x in r]
+    out = []
+    for i, x in enumerate(r):
+        if x is None:
+            out.append(None)
+        elif i > 0 and r[i - 1] is not None and r[i - 1] >= p["bas"] and x < p["bas"]:
+            out.append("achat")
+        elif x > p["haut"]:
+            out.append("vente")
+        else:
+            out.append(None)
+    return out
 
 
 def signaux_boll(c, p, ctx):
+    # Achat quand le prix PASSE au-dessus de la bande haute ; vente quand il retombe sous le milieu.
     m, sd = SMA(c, p["periode"]), STD(c, p["periode"])
+    up = [m[i] + p["ecart"] * sd[i] if m[i] is not None else None for i in range(len(c))]
     out = []
     for i, x in enumerate(c):
         if m[i] is None:
             out.append(None)
-        elif x > m[i] + p["ecart"] * sd[i]:
+        elif _cross_up(c, up, i):
             out.append("achat")
         elif x < m[i]:
             out.append("vente")
@@ -113,6 +134,7 @@ def signaux_boll(c, p, ctx):
 
 
 def signaux_macd(c, p, ctx):
+    # Achat quand le MACD PASSE au-dessus de sa ligne signal ; vente quand il est en dessous.
     f, s = EMA(c, p["rapide"]), EMA(c, p["lente"])
     macd = [f[i] - s[i] if f[i] is not None and s[i] is not None else None for i in range(len(c))]
     sig: list[float | None] = [None] * len(c)
@@ -121,7 +143,8 @@ def signaux_macd(c, p, ctx):
         e = EMA(macd[first:], p["signal"])
         for k, val in enumerate(e):
             sig[first + k] = val
-    return [None if macd[i] is None or sig[i] is None else "achat" if macd[i] > sig[i] else "vente"
+    return ["achat" if _cross_up(macd, sig, i) else
+            "vente" if macd[i] is not None and sig[i] is not None and macd[i] < sig[i] else None
             for i in range(len(c))]
 
 
@@ -144,22 +167,22 @@ def signaux_bh(c, p, ctx):
 STRATEGIES = {
     "ema": {"nom": "Croisement de moyennes EMA", "fn": signaux_ema,
             "params": {"rapide": 20, "lente": 50},
-            "explication": "Achète quand la tendance courte passe au-dessus de la tendance longue, revend quand elle repasse en dessous."},
+            "explication": "Achète au moment où la tendance courte repasse au-dessus de la tendance longue (nouveau croisement), revend quand elle repasse en dessous."},
     "rsi": {"nom": "RSI (survente / surachat)", "fn": signaux_rsi,
             "params": {"periode": 14, "bas": 30, "haut": 70},
-            "explication": "Achète quand l'actif a beaucoup baissé (RSI sous 30), revend quand il a beaucoup monté (RSI au-dessus de 70)."},
+            "explication": "Achète au moment où l'actif devient très survendu (le RSI passe sous 30), revend quand il a beaucoup monté (RSI au-dessus de 70)."},
     "boll": {"nom": "Cassure de Bollinger", "fn": signaux_boll,
              "params": {"periode": 20, "ecart": 2.0},
-             "explication": "Achète quand le prix sort par le haut de son couloir habituel, revend quand il retombe au milieu du couloir."},
+             "explication": "Achète au moment où le prix sort par le haut de son couloir habituel, revend quand il retombe au milieu du couloir."},
     "macd": {"nom": "MACD", "fn": signaux_macd,
              "params": {"rapide": 12, "lente": 26, "signal": 9},
-             "explication": "Achète quand l'élan du prix repart à la hausse (MACD au-dessus de sa ligne signal), revend quand il faiblit."},
+             "explication": "Achète au moment où l'élan repart à la hausse (le MACD repasse au-dessus de sa ligne signal), revend quand il faiblit."},
     "dca": {"nom": "Achat régulier (DCA)", "fn": signaux_dca,
             "params": {"n": 7},
             "explication": "Achète un petit morceau à intervalles réguliers, quel que soit le prix, sans jamais revendre."},
     "bh": {"nom": "Acheter et garder", "fn": signaux_bh,
            "params": {},
-           "explication": "Achète tout de suite et ne revend jamais."},
+           "explication": "Achète tout au premier passage après le choix de cette stratégie, puis ne revend jamais."},
 }
 
 

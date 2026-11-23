@@ -1,5 +1,5 @@
 {
-  "_aide": "Réglages du bot (argent 100 % fictif). Pour changer de stratégie sans toucher au code : onglet Actions du dépôt → « Changer de stratégie » → Run workflow. Tu peux aussi modifier ce fichier à la main : la stratégie globale est dans 'strategy', une stratégie propre à un actif se met dans 'strategy' de l'actif (sinon null). Pour ajouter un actif, copie une ligne de 'assets' (source 'binance' pour une crypto en USDT, 'yahoo' pour une action ou un indice, symbole Yahoo Finance). Chaque nouvel actif reçoit sa propre enveloppe fictive.",
+  "_aide": "Réglages du bot (argent 100 % fictif). Pour changer de stratégie sans toucher au code : onglet Actions du dépôt → « Changer de stratégie » → Run workflow. Tu peux aussi modifier ce fichier à la main : la stratégie globale est dans 'strategy', une stratégie propre à un actif se met dans 'strategy' de l'actif (sinon null). Pour ajouter un actif, copie une ligne de 'assets' (source 'binance' pour une crypto en USDT, 'yahoo' pour une action ou un indice, symbole Yahoo Finance). Chaque nouvel actif reçoit sa propre enveloppe fictive (1 000 € par défaut, champ 'envelope'). Le rendement en % de l'actif est appliqué à l'enveloppe en euros, sans conversion de change.",
   "version": 2,
   "timeframe": "1h",
   "fee_rate": 0.0,
@@ -228,5 +228,6 @@
       "envelope": 1000,
       "strategy": null
     }
-  ]
+  ],
+  "currency": "EUR"
 }
