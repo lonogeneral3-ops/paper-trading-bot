@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="refresh" content="60"/>
+  <title>Paper bot — suivi fictif</title>
+  <style>
+    :root {
+      --bg: #f3f5f7;
+      --card: #ffffff;
+      --ink: #1a2330;
+      --muted: #5c6770;
+      --line: #e4e8ec;
+      --blue: #1f6feb;
+      --up: #0a7a3e;
+      --up-bg: #e7f7ee;
+      --down: #b42318;
+      --down-bg: #fdecea;
+      --warn: #8a5a00;
+      --warn-bg: #fff6e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 22px 24px 20px;
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      font-weight: 650;
+    }
+    header p { margin: 0; color: #c9d1d9; font-size: 0.95rem; }
+    .banner {
+      background: var(--warn-bg);
+      color: var(--warn);
+      padding: 10px 24px;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #f0e0b0;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px 18px 48px;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 1px 2px rgba(16,24,40,.04);
+    }
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+    .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    .value { font-size: 1.45rem; font-weight: 700; margin: 0; }
+    .sub { margin: 4px 0 0; color: var(--muted); font-size: 0.88rem; }
+    .up { color: var(--up); }
+    .down { color: var(--down); }
+    .neutral { color: var(--ink); }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #eef1f4;
+    }
+    .pill.open, .pill.up { background: var(--up-bg); color: var(--up); }
+    .pill.flat { background: #eef1f4; color: var(--muted); }
+    .pill.down { background: var(--down-bg); color: var(--down); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--muted);
+      font-weight: 650;
+    }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tr.reason td {
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding-top: 0;
+      padding-bottom: 10px;
+    }
+    .muted { color: var(--muted); }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 8px 24px;
+      font-size: 0.9rem;
+    }
+    .meta dt { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .03em; }
+    .meta dd { margin: 0 0 8px; }
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .chart-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paper bot — suivi du capital fictif</h1>
+    <p>Stratégie EMA 20/50, bougies 1h, long only · dernière bougie 2026-11-23T21:59:59+01:00 (Europe/Paris)</p>
+  </header>
+  <div class="banner">
+    Argent 100 % fictif — aucun compte, aucun ordre réel, aucune clé API.
+    Ceci n'est pas un conseil en investissement.
+  </div>
+  <main>
+    <section class="kpis">
+      <div class="card">
+        <p class="label">Capital actuel</p>
+        <p class="value">10 000.00 $</p>
+        <p class="sub">sur 10 000.00 $ de départ</p>
+      </div>
+      <div class="card">
+        <p class="label">P&amp;L du bot</p>
+        <p class="value neutral">+0.00 $</p>
+        <p class="sub neutral">+0.00 %</p>
+      </div>
+      <div class="card">
+        <p class="label">Buy &amp; hold (même panier)</p>
+        <p class="value">10 000.00 $</p>
+        <p class="sub neutral">+0.00 $ depuis le départ</p>
+      </div>
+      <div class="card">
+        <p class="label">Bot vs buy &amp; hold</p>
+        <p class="value neutral">+0.00 $</p>
+        <p class="sub">10 position(s) ouverte(s) · 10 trade(s)</p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <h2>Évolution du capital vs buy-and-hold</h2>
+      <div class="chart-wrap"><svg viewBox="0 0 920 340" width="100%" role="img" aria-label="Courbe du capital fictif du bot vs buy-and-hold"><rect x="0" y="0" width="920" height="340" rx="12" fill="#ffffff"/><line x1="64" y1="288.0" x2="900" y2="288.0" stroke="#e4e8ec" stroke-width="1"/><line x1="64" y1="221.0" x2="900" y2="221.0" stroke="#e4e8ec" stroke-width="1"/><line x1="64" y1="154.0" x2="900" y2="154.0" stroke="#e4e8ec" stroke-width="1"/><line x1="64" y1="87.0" x2="900" y2="87.0" stroke="#e4e8ec" stroke-width="1"/><line x1="64" y1="20.0" x2="900" y2="20.0" stroke="#e4e8ec" stroke-width="1"/><line x1="64" y1="154.0" x2="900" y2="154.0" stroke="#8b95a0" stroke-width="1.2" stroke-dasharray="5 4"/><text x="54" y="288.0" text-anchor="end" dominant-baseline="middle" fill="#5c6770" font-size="11" font-family="system-ui sans-serif">9 994</text><text x="54" y="221.0" text-anchor="end" dominant-baseline="middle" fill="#5c6770" font-size="11" font-family="system-ui sans-serif">9 997</text><text x="54" y="154.0" text-anchor="end" dominant-baseline="middle" fill="#5c6770" font-size="11" font-family="system-ui sans-serif">10 000</text><text x="54" y="87.0" text-anchor="end" dominant-baseline="middle" fill="#5c6770" font-size="11" font-family="system-ui sans-serif">10 003</text><text x="54" y="20.0" text-anchor="end" dominant-baseline="middle" fill="#5c6770" font-size="11" font-family="system-ui sans-serif">10 006</text><path d="M482.0,154.0" fill="none" stroke="#bc4c00" stroke-width="2.2" stroke-dasharray="7 5"/><path d="M482.0,154.0" fill="none" stroke="#1f6feb" stroke-width="2.5"/><circle cx="482.0" cy="154.0" r="3.2" fill="#1f6feb"/><text x="482.0" y="322" text-anchor="middle" fill="#5c6770" font-size="11" font-family="system-ui,sans-serif">23/11 21h</text><g font-family="system-ui,sans-serif" font-size="12"><line x1="64" y1="334" x2="86" y2="334" stroke="#1f6feb" stroke-width="2.5"/><text x="92" y="338" fill="#1a2330">Bot (EMA 20/50)</text><line x1="224" y1="334" x2="246" y2="334" stroke="#bc4c00" stroke-width="2.5" stroke-dasharray="6 4"/><text x="252" y="338" fill="#1a2330">Buy &amp; hold du même panier</text><line x1="464" y1="334" x2="486" y2="334" stroke="#8b95a0" stroke-width="1.2" stroke-dasharray="5 4"/><text x="492" y="338" fill="#1a2330">Capital de départ (10 000 $)</text></g></svg></div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <h2>Positions par crypto (1 000 $ fictifs chacun)</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbole</th>
+              <th>Statut</th>
+              <th class="num">Prix</th>
+              <th class="num">Quantité</th>
+              <th class="num">Valeur</th>
+              <th class="num">P&amp;L $</th>
+              <th class="num">P&amp;L %</th>
+              <th>Détail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>BTCUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>61236.010000</td><td class='num'>0.01633026</td><td class='num'>1 000.00 $</td><td class='num up'>+0.00 $</td><td class='num up'>+0.00 %</td><td class='muted'>Entrée 61236.010000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>ETHUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>1725.360000</td><td class='num'>0.57958919</td><td class='num'>1 000.00 $</td><td class='num down'>-0.00 $</td><td class='num down'>-0.00 %</td><td class='muted'>Entrée 1725.360000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>SOLUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>72.820000</td><td class='num'>13.73249107</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 72.820000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>BNBUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>557.030000</td><td class='num'>1.79523545</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 557.030000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>XRPUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>0.937400</td><td class='num'>1066.78045658</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 0.937400 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>ADAUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>0.147600</td><td class='num'>6775.06775068</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 0.147600 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>DOGEUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>0.056590</td><td class='num'>17670.96660187</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 0.056590 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>AVAXUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>6.793000</td><td class='num'>147.21036361</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 6.793000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>LINKUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>8.987000</td><td class='num'>111.27183710</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 8.987000 le 2026-11-23T21:59:59+01:00</td></tr><tr><td><strong>DOTUSDT</strong></td><td><span class='pill open'>En position</span></td><td class='num'>0.685000</td><td class='num'>1459.85401460</td><td class='num'>1 000.00 $</td><td class='num neutral'>+0.00 $</td><td class='num neutral'>+0.00 %</td><td class='muted'>Entrée 0.685000 le 2026-11-23T21:59:59+01:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <h2>Historique des trades (10)</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th class="num">Id</th>
+              <th>Date (Europe/Paris)</th>
+              <th>Côté</th>
+              <th>Symbole</th>
+              <th class="num">Prix</th>
+              <th class="num">Quantité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class='num'>10</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>DOTUSDT</strong></td><td class='num'>0.685000</td><td class='num'>1459.85401460</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>9</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>LINKUSDT</strong></td><td class='num'>8.987000</td><td class='num'>111.27183710</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>8</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>AVAXUSDT</strong></td><td class='num'>6.793000</td><td class='num'>147.21036361</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>7</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>DOGEUSDT</strong></td><td class='num'>0.056590</td><td class='num'>17670.96660187</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>6</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>ADAUSDT</strong></td><td class='num'>0.147600</td><td class='num'>6775.06775068</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>5</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>XRPUSDT</strong></td><td class='num'>0.937400</td><td class='num'>1066.78045658</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>4</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>BNBUSDT</strong></td><td class='num'>557.030000</td><td class='num'>1.79523545</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>3</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>SOLUSDT</strong></td><td class='num'>72.820000</td><td class='num'>13.73249107</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>2</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>ETHUSDT</strong></td><td class='num'>1725.360000</td><td class='num'>0.57958919</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr><tr><td class='num'>1</td><td>2026-11-23T21:59:59+01:00</td><td><span class='pill up'>BUY</span></td><td><strong>BTCUSDT</strong></td><td class='num'>61236.010000</td><td class='num'>0.01633026</td></tr><tr class='reason'><td></td><td colspan='5'>Tendance déjà haussière (EMA20 &gt; EMA50) — entrée autorisée même sans attendre un nouveau croisement</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Paramètres</h2>
+      <dl class="meta">
+        <div>
+          <dt>Démarrage</dt>
+          <dd>2026-11-23T22:40:13+01:00</dd>
+        </div>
+        <div>
+          <dt>Fin prévue (7 jours)</dt>
+          <dd>2026-11-30T22:40:13+01:00</dd>
+        </div>
+        <div>
+          <dt>Dernière bougie traitée</dt>
+          <dd>2026-11-23T21:59:59+01:00</dd>
+        </div>
+        <div>
+          <dt>Dernier passage du bot</dt>
+          <dd>2026-11-23T22:40:13+01:00</dd>
+        </div>
+        <div>
+          <dt>Source des prix</dt>
+          <dd>https://api.binance.us/api/v3/klines</dd>
+        </div>
+        <div>
+          <dt>Frais</dt>
+          <dd>Sans frais, sans effet de levier</dd>
+        </div>
+      </dl>
+      <p class="muted" style="margin:8px 0 0">Moyennes mobiles exponentielles 20 et 50 sur bougies d&#x27;une heure, positions longues uniquement, sans effet de levier. Achat si EMA20 &gt; EMA50 et qu&#x27;on n&#x27;est pas déjà investi (y compris si la tendance est déjà haussière, pas seulement sur un nouveau croisement). Vente si EMA20 &lt; EMA50. Sans frais (0 %). Décisions prises à la clôture de la bougie 1h, au prix de clôture.</p>
+      <p class="muted" style="margin:8px 0 0">api.binance.com renvoyait HTTP 451 (restriction géographique) ; repli sur api.binance.us, endpoint public /api/v3/klines, sans clé API.</p>
+    </section>
+
+    <footer>
+      Fichier généré automatiquement après chaque cycle horaire du bot.
+      Cette page se rafraîchit toute seule toutes les 60 secondes si elle est ouverte dans un navigateur.
+      Les chiffres sont figés jusqu'au prochain cycle (clôture d'une bougie 1h).
+    </footer>
+  </main>
+</body>
+</html>

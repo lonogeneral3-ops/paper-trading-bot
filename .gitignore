@@ -1,0 +1,15 @@
+venv/
+.venv/
+logs/
+__pycache__/
+*.py[cod]
+*.pid
+data/STOP
+*.tmp
+dashboard/*.tmp
+docs/*.tmp
+data/*.tmp
+.DS_Store
+dashboard-server.pid
+supervisor.pid
+bot.pid
