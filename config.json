@@ -4,10 +4,11 @@
   "timeframe": "1h",
   "fee_rate": 0.0,
   "strategy": {
-    "id": "ema",
+    "id": "rsi",
     "params": {
-      "rapide": 20,
-      "lente": 50
+      "periode": 14,
+      "bas": 30,
+      "haut": 70
     }
   },
   "strategies_disponibles": [
