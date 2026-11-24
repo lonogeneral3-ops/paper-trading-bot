@@ -703,13 +703,35 @@
       }
     }
   },
-  "strategy_changes": [],
+  "strategy_changes": [
+    {
+      "time": "2026-11-24T09:24:42+01:00",
+      "scope": "tous",
+      "old": {
+        "id": "ema",
+        "params": {
+          "rapide": 20,
+          "lente": 50
+        }
+      },
+      "new": {
+        "id": "rsi",
+        "params": {
+          "periode": 14,
+          "bas": 30,
+          "haut": 70
+        }
+      },
+      "by": "workflow Changer de stratégie"
+    }
+  ],
   "strategy_current": {
     "global": {
-      "id": "ema",
+      "id": "rsi",
       "params": {
-        "rapide": 20,
-        "lente": 50
+        "periode": 14,
+        "bas": 30,
+        "haut": 70
       }
     },
     "overrides": {}
@@ -777,6 +799,6 @@
     }
   },
   "initial_capital": 19000.0,
-  "strategy": "Croisement de moyennes EMA (rapide=20, lente=50) · bougies 1h",
+  "strategy": "RSI (survente / surachat) (periode=14, bas=30, haut=70) · bougies 1h",
   "last_processed_candle_close_paris": "2026-11-24T08:00:00+01:00"
 }
