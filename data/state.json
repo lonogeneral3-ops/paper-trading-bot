@@ -11,8 +11,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 59786.38,
+      "last_open_ms": 1795521600000,
+      "last_price": 60445.13,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "BTC",
@@ -21,7 +21,7 @@
       "currency": "USD",
       "source_symbol": "BTCUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "ETHUSDT": {
       "cash": 1000.0,
@@ -30,8 +30,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 1684.37,
+      "last_open_ms": 1795521600000,
+      "last_price": 1703.64,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "ETH",
@@ -40,7 +40,7 @@
       "currency": "USD",
       "source_symbol": "ETHUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "SOLUSDT": {
       "cash": 1000.0,
@@ -49,8 +49,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 70.42,
+      "last_open_ms": 1795521600000,
+      "last_price": 70.77,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "SOL",
@@ -59,7 +59,7 @@
       "currency": "USD",
       "source_symbol": "SOLUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "BNBUSDT": {
       "cash": 1000.0,
@@ -68,8 +68,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 545.6,
+      "last_open_ms": 1795521600000,
+      "last_price": 551.22,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "BNB",
@@ -78,7 +78,7 @@
       "currency": "USD",
       "source_symbol": "BNBUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "XRPUSDT": {
       "cash": 1000.0,
@@ -87,8 +87,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 0.9292,
+      "last_open_ms": 1795521600000,
+      "last_price": 0.9285,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "XRP",
@@ -97,7 +97,7 @@
       "currency": "USD",
       "source_symbol": "XRPUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "ADAUSDT": {
       "cash": 1000.0,
@@ -106,8 +106,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 0.146,
+      "last_open_ms": 1795521600000,
+      "last_price": 0.14552,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "ADA",
@@ -116,7 +116,7 @@
       "currency": "USD",
       "source_symbol": "ADAUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "DOGEUSDT": {
       "cash": 1000.0,
@@ -125,8 +125,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 0.05555,
+      "last_open_ms": 1795521600000,
+      "last_price": 0.05562,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "DOGE",
@@ -135,7 +135,7 @@
       "currency": "USD",
       "source_symbol": "DOGEUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "AVAXUSDT": {
       "cash": 1000.0,
@@ -144,8 +144,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 6.707,
+      "last_open_ms": 1795521600000,
+      "last_price": 6.709,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "AVAX",
@@ -154,7 +154,7 @@
       "currency": "USD",
       "source_symbol": "AVAXUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "LINKUSDT": {
       "cash": 1000.0,
@@ -163,8 +163,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 8.945,
+      "last_open_ms": 1795521600000,
+      "last_price": 8.967,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "LINK",
@@ -173,7 +173,7 @@
       "currency": "USD",
       "source_symbol": "LINKUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "DOTUSDT": {
       "cash": 1000.0,
@@ -182,8 +182,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 0.673,
+      "last_open_ms": 1795521600000,
+      "last_price": 0.668,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "DOT",
@@ -192,7 +192,7 @@
       "currency": "USD",
       "source_symbol": "DOTUSDT",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "SPX": {
       "cash": 1000.0,
@@ -239,8 +239,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 8042.3798828125,
+      "last_open_ms": 1795521600000,
+      "last_price": 8060.83984375,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "CAC 40",
@@ -249,7 +249,7 @@
       "currency": "EUR",
       "source_symbol": "^FCHI",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "AAPL": {
       "cash": 1000.0,
@@ -334,8 +334,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 389.3999938964844,
+      "last_open_ms": 1795521600000,
+      "last_price": 389.75,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "LVMH",
@@ -344,7 +344,7 @@
       "currency": "EUR",
       "source_symbol": "MC.PA",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00"
+      "last_close_time": "2026-11-24T14:00:00+01:00"
     },
     "TTE": {
       "cash": 0.0,
@@ -353,8 +353,8 @@
       "entry_time": "2026-11-24T10:00:00+01:00",
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795514400000,
-      "last_price": 77.01000213623047,
+      "last_open_ms": 1795521600000,
+      "last_price": 77.26000213623047,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "TotalEnergies",
@@ -363,7 +363,7 @@
       "currency": "EUR",
       "source_symbol": "TTE.PA",
       "active": true,
-      "last_close_time": "2026-11-24T12:00:00+01:00",
+      "last_close_time": "2026-11-24T14:00:00+01:00",
       "cost_basis": 1000.0
     }
   },
@@ -750,6 +750,58 @@
           "capital": 3000.0
         }
       }
+    },
+    {
+      "time": "2026-11-24T13:00:00+01:00",
+      "time_ms": 1795521600000,
+      "equity": 18999.480777322795,
+      "buy_and_hold_equity": 18919.955519169263,
+      "capital": 19000.0,
+      "realized_pnl": 0.0,
+      "unrealized_pnl": -0.5192226772064017,
+      "groups": {
+        "crypto": {
+          "equity": 10000.0,
+          "bh": 9920.838822746804,
+          "capital": 10000.0
+        },
+        "action": {
+          "equity": 5999.480777322793,
+          "bh": 6001.025592237687,
+          "capital": 6000.0
+        },
+        "indice": {
+          "equity": 3000.0,
+          "bh": 2998.0911041847726,
+          "capital": 3000.0
+        }
+      }
+    },
+    {
+      "time": "2026-11-24T14:00:00+01:00",
+      "time_ms": 1795525200000,
+      "equity": 19002.855675208833,
+      "buy_and_hold_equity": 18885.565875551998,
+      "capital": 19000.0,
+      "realized_pnl": 0.0,
+      "unrealized_pnl": 2.8556752088353616,
+      "groups": {
+        "crypto": {
+          "equity": 10000.0,
+          "bh": 9880.052501927155,
+          "capital": 10000.0
+        },
+        "action": {
+          "equity": 6002.855675208835,
+          "bh": 6006.331489124207,
+          "capital": 6000.0
+        },
+        "indice": {
+          "equity": 3000.0,
+          "bh": 2999.1818845006364,
+          "capital": 3000.0
+        }
+      }
     }
   ],
   "buy_and_hold": {
@@ -894,55 +946,55 @@
   ],
   "data_source": "Binance.US + Yahoo Finance",
   "data_errors": {},
-  "last_run_at": "2026-11-24T12:59:49+01:00",
+  "last_run_at": "2026-11-24T14:18:01+01:00",
   "last_prices": {
-    "BTCUSDT": 59786.38,
-    "ETHUSDT": 1684.37,
-    "SOLUSDT": 70.42,
-    "BNBUSDT": 545.6,
-    "XRPUSDT": 0.9292,
-    "ADAUSDT": 0.146,
-    "DOGEUSDT": 0.05555,
-    "AVAXUSDT": 6.707,
-    "LINKUSDT": 8.945,
-    "DOTUSDT": 0.673,
+    "BTCUSDT": 60445.13,
+    "ETHUSDT": 1703.64,
+    "SOLUSDT": 70.77,
+    "BNBUSDT": 551.22,
+    "XRPUSDT": 0.9285,
+    "ADAUSDT": 0.14552,
+    "DOGEUSDT": 0.05562,
+    "AVAXUSDT": 6.709,
+    "LINKUSDT": 8.967,
+    "DOTUSDT": 0.668,
     "SPX": 7236.85009765625,
     "NDX": 26745.640625,
-    "CAC40": 8042.3798828125,
+    "CAC40": 8060.83984375,
     "AAPL": 349.6199951171875,
     "NVDA": 165.18499755859375,
     "MSFT": 492.9700012207031,
     "TSLA": 385.8599853515625,
-    "LVMH": 389.3999938964844,
-    "TTE": 77.01000213623047
+    "LVMH": 389.75,
+    "TTE": 77.26000213623047
   },
   "summary": {
-    "time": "2026-11-24T12:59:37+01:00",
-    "time_ms": 1795521577749,
-    "equity": 18999.610607749994,
-    "buy_and_hold_equity": 18849.604891143917,
+    "time": "2026-11-24T14:17:51+01:00",
+    "time_ms": 1795526271268,
+    "equity": 19002.855675208833,
+    "buy_and_hold_equity": 18885.565875551998,
     "capital": 19000.0,
     "realized_pnl": 0.0,
-    "unrealized_pnl": -0.3893922500048773,
+    "unrealized_pnl": 2.8556752088353616,
     "groups": {
       "crypto": {
         "equity": 10000.0,
-        "bh": 9850.52593912038,
+        "bh": 9880.052501927155,
         "capital": 10000.0
       },
       "action": {
-        "equity": 5999.610607749995,
-        "bh": 6002.185273083967,
+        "equity": 6002.855675208835,
+        "bh": 6006.331489124207,
         "capital": 6000.0
       },
       "indice": {
         "equity": 3000.0,
-        "bh": 2996.8936789395693,
+        "bh": 2999.1818845006364,
         "capital": 3000.0
       }
     }
   },
   "initial_capital": 19000.0,
   "strategy": "RSI (survente / surachat) (periode=14, bas=30, haut=70) · bougies 1h",
-  "last_processed_candle_close_paris": "2026-11-24T12:00:00+01:00"
+  "last_processed_candle_close_paris": "2026-11-24T14:00:00+01:00"
 }
