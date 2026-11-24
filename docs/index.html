@@ -462,7 +462,7 @@ function renderBot(){
   $("#kCapS").textContent = `sur ${usd(tot.env)} d'enveloppes fictives (${rows.length} actifs × 1 000 €)`;
   $("#kPnl").innerHTML = `<span class="${cls(pnl)}">${sUsd(pnl)}</span>`;
   const nPos = rows.filter(r=>r.inPos).length;
-  if (!nPos) msg($("#botWait"),"info", `💤 <b>Le bot est 100 % en cash (${usd(tot.eq)} fictifs) : en attente d'un signal d'achat.</b> Il n'achète pas tout de suite : il attend un <b>nouveau</b> signal de sa stratégie (${esc(stratLabel(sc.global))}${sc.global?.id==="ema"?" : la moyenne courte doit repasser au-dessus de la longue":""}). Ça peut prendre quelques heures ou quelques jours, c'est normal.`);
+  if (!nPos) msg($("#botWait"),"info", `💤 <b>Le bot est 100 % en cash (${usd(tot.eq)} fictifs) : en attente d'un signal d'achat.</b> Il n'achète pas tout de suite : il attend un <b>nouveau</b> signal de sa stratégie (${esc(stratLabel(sc.global))}${sc.global?.id==="ema"?" : la moyenne courte doit repasser au-dessus de la longue":sc.global?.id==="rsi"?` : un actif doit devenir très survendu, RSI sous ${sc.global.params?.bas??30}`:""}). Ça peut prendre quelques heures ou quelques jours, c'est normal.`);
   else msg($("#botWait"),"info", `📌 ${nPos} actif${nPos>1?"s":""} sur ${rows.length} en position, les autres sont en cash, en attente d'un signal d'achat.`);
   if (state.reset_note) $("#resetNote").innerHTML = `ℹ️ ${esc(state.reset_note.text)} <a href="https://github.com/${REPO}/tree/${BRANCH}/${esc(state.reset_note.archive||"data/archive")}" target="_blank" rel="noopener">Voir l'archive ↗</a>`;
   $("#kPnlPct").innerHTML = `<span class="${cls(pnl)}">${sPct(pnl/tot.env*100)}</span> depuis le début`;
@@ -582,7 +582,7 @@ const crossUp = (a,b,i) => i>0 && a[i]!=null && b[i]!=null && a[i-1]!=null && b[
 
 // ---- Les stratégies ----
 const STRATEGIES = [
-  { id:"ema", nom:"Croisement de moyennes EMA (mon bot)", couleur:"#60a5fa", actif:true,
+  { id:"ema", nom:"Croisement de moyennes EMA", couleur:"#60a5fa", actif:true,
     explication:"Achète au moment où la tendance courte repasse au-dessus de la tendance longue (nouveau croisement), revend quand elle repasse en dessous.",
     params:[{cle:"rapide",label:"Moyenne courte",defaut:20,min:2,max:200,pas:1},{cle:"lente",label:"Moyenne longue",defaut:50,min:3,max:400,pas:1}],
     signaux(b,p){ const c=closes(b), f=EMA(c,p.rapide), s=EMA(c,p.lente);
@@ -590,10 +590,11 @@ const STRATEGIES = [
       return c.map((_,i)=> crossUp(f,s,i) ? "achat" : f[i]!=null&&s[i]!=null&&f[i]<s[i] ? "vente" : null); } },
 
   { id:"rsi", nom:"RSI (survente / surachat)", couleur:"#f59e0b", actif:true,
-    explication:"Achète au moment où l'actif devient très survendu (le RSI passe sous 30), revend quand il a beaucoup monté (RSI au-dessus de 70).",
+    explication:"Achète quand l'actif est très survendu (RSI sous 30) et qu'on n'est pas déjà investi, revend quand il a beaucoup monté (RSI au-dessus de 70).",
     params:[{cle:"periode",label:"Période RSI",defaut:14,min:2,max:100,pas:1},{cle:"bas",label:"Acheter sous",defaut:30,min:1,max:50,pas:1},{cle:"haut",label:"Vendre au-dessus",defaut:70,min:50,max:99,pas:1}],
     signaux(b,p){ const r=RSI(closes(b),p.periode);
-      return r.map((x,i)=> x==null?null : (i>0&&r[i-1]!=null&&r[i-1]>=p.bas&&x<p.bas)?"achat" : x>p.haut?"vente" : null); } },
+      // comme le bot : achat dès que le RSI est sous le seuil bas (le moteur n'achète que s'il reste du cash)
+      return r.map(x=> x==null?null : x<p.bas?"achat" : x>p.haut?"vente" : null); } },
 
   { id:"boll", nom:"Cassure de Bollinger", couleur:"#a78bfa", actif:true,
     explication:"Achète au moment où le prix sort par le haut de son couloir habituel, revend quand il retombe au milieu du couloir.",

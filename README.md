@@ -55,7 +55,7 @@ qui se terminent après le changement.
 | id | Nom | Réglages par défaut | Règle |
 |---|---|---|---|
 | `ema` | Croisement EMA | rapide=20 lente=50 | achète au croisement haussier (EMA rapide repasse au-dessus de la lente), vend quand elle repasse dessous |
-| `rsi` | RSI | periode=14 bas=30 haut=70 | achète quand le RSI passe sous « bas », vend si RSI > haut |
+| `rsi` | RSI | periode=14 bas=30 haut=70 | achète si le RSI est sous « bas » et qu'on n'est pas investi, vend si RSI > haut |
 | `boll` | Cassure de Bollinger | periode=20 ecart=2 | achète quand le prix passe au-dessus de la bande haute, vend si prix < moyenne |
 | `macd` | MACD | rapide=12 lente=26 signal=9 | achète quand le MACD repasse au-dessus du signal, vend s'il est dessous |
 | `dca` | Achat régulier | n=7 | n achats égaux du cash restant, répartis jusqu'à la fin, jamais de vente |

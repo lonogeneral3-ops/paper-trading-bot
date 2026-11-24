@@ -221,7 +221,7 @@ def trade(state, key, side, price, q, fee, notional, when, reason, strat_id):
 REASONS = {
     ("ema", "achat"): "Croisement haussier : l'EMA courte repasse au-dessus de la longue",
     ("ema", "vente"): "EMA courte passée sous la longue : tendance baissière",
-    ("rsi", "achat"): "Le RSI vient de passer sous le seuil bas : actif très survendu",
+    ("rsi", "achat"): "RSI sous le seuil bas : actif très survendu",
     ("rsi", "vente"): "RSI au-dessus du seuil haut : l'actif a beaucoup monté",
     ("boll", "achat"): "Le prix vient de sortir par le haut de la bande de Bollinger",
     ("boll", "vente"): "Prix retombé sous le milieu de la bande de Bollinger",

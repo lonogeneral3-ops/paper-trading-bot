@@ -101,19 +101,10 @@ def signaux_ema(c, p, ctx):
 
 
 def signaux_rsi(c, p, ctx):
-    # Achat quand le RSI PASSE sous le seuil bas ; vente quand il est au-dessus du seuil haut.
+    # Achat dès que le RSI est SOUS le seuil bas (actif très survendu) et qu'on n'est pas déjà investi
+    # (le moteur n'achète que s'il reste du cash) ; vente quand le RSI dépasse le seuil haut.
     r = RSI(c, p["periode"])
-    out = []
-    for i, x in enumerate(r):
-        if x is None:
-            out.append(None)
-        elif i > 0 and r[i - 1] is not None and r[i - 1] >= p["bas"] and x < p["bas"]:
-            out.append("achat")
-        elif x > p["haut"]:
-            out.append("vente")
-        else:
-            out.append(None)
-    return out
+    return [None if x is None else "achat" if x < p["bas"] else "vente" if x > p["haut"] else None for x in r]
 
 
 def signaux_boll(c, p, ctx):
@@ -170,7 +161,7 @@ STRATEGIES = {
             "explication": "Achète au moment où la tendance courte repasse au-dessus de la tendance longue (nouveau croisement), revend quand elle repasse en dessous."},
     "rsi": {"nom": "RSI (survente / surachat)", "fn": signaux_rsi,
             "params": {"periode": 14, "bas": 30, "haut": 70},
-            "explication": "Achète au moment où l'actif devient très survendu (le RSI passe sous 30), revend quand il a beaucoup monté (RSI au-dessus de 70)."},
+            "explication": "Achète quand l'actif est très survendu (RSI sous 30) et qu'on n'est pas déjà investi, revend quand il a beaucoup monté (RSI au-dessus de 70)."},
     "boll": {"nom": "Cassure de Bollinger", "fn": signaux_boll,
              "params": {"periode": 20, "ecart": 2.0},
              "explication": "Achète au moment où le prix sort par le haut de son couloir habituel, revend quand il retombe au milieu du couloir."},
