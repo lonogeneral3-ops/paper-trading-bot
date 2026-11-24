@@ -1,3 +1,4 @@
 id,time,symbol,label,group,side,price,qty,fee,notional,pnl,strategy,reason
 1,2026-11-24T10:00:00+01:00,TTE,TotalEnergies,action,BUY,77.04000091552734,12.980269835360955,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
 2,2026-11-24T17:00:00+01:00,DOTUSDT,DOT,crypto,BUY,0.647,1545.5950540958268,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
+3,2026-11-24T21:00:00+01:00,AVAXUSDT,AVAX,crypto,BUY,6.552,152.62515262515262,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
