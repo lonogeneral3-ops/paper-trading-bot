@@ -203,8 +203,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 7201.7900390625,
+      "last_open_ms": 1795548600000,
+      "last_price": 7175.72998046875,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "S&P 500",
@@ -213,7 +213,7 @@
       "currency": "USD",
       "source_symbol": "^GSPC",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "NDX": {
       "cash": 1000.0,
@@ -222,8 +222,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 26247.70703125,
+      "last_open_ms": 1795548600000,
+      "last_price": 26091.21484375,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "Nasdaq 100",
@@ -232,7 +232,7 @@
       "currency": "USD",
       "source_symbol": "^NDX",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "CAC40": {
       "cash": 1000.0,
@@ -260,8 +260,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 352.6499938964844,
+      "last_open_ms": 1795548600000,
+      "last_price": 351.875,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "Apple",
@@ -270,7 +270,7 @@
       "currency": "USD",
       "source_symbol": "AAPL",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "NVDA": {
       "cash": 1000.0,
@@ -279,8 +279,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 153.22500610351562,
+      "last_open_ms": 1795548600000,
+      "last_price": 152.7899932861328,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "Nvidia",
@@ -289,7 +289,7 @@
       "currency": "USD",
       "source_symbol": "NVDA",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "MSFT": {
       "cash": 1000.0,
@@ -298,8 +298,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 494.6199951171875,
+      "last_open_ms": 1795548600000,
+      "last_price": 493.8999938964844,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "Microsoft",
@@ -308,7 +308,7 @@
       "currency": "USD",
       "source_symbol": "MSFT",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "TSLA": {
       "cash": 1000.0,
@@ -317,8 +317,8 @@
       "entry_time": null,
       "entry_fee": 0.0,
       "realized_pnl": 0.0,
-      "last_open_ms": 1795545000000,
-      "last_price": 384.54998779296875,
+      "last_open_ms": 1795548600000,
+      "last_price": 382.44000244140625,
       "envelope": 1000.0,
       "added_at": "2026-11-24T00:09:29+01:00",
       "label": "Tesla",
@@ -327,7 +327,7 @@
       "currency": "USD",
       "source_symbol": "TSLA",
       "active": true,
-      "last_close_time": "2026-11-24T20:30:00+01:00"
+      "last_close_time": "2026-11-24T21:30:00+01:00"
     },
     "LVMH": {
       "cash": 1000.0,
@@ -1150,6 +1150,32 @@
           "capital": 3000.0
         }
       }
+    },
+    {
+      "time": "2026-11-24T21:30:00+01:00",
+      "time_ms": 1795552200000,
+      "equity": 19031.892755811066,
+      "buy_and_hold_equity": 18794.68736675534,
+      "capital": 19000.0,
+      "realized_pnl": 0.0,
+      "unrealized_pnl": 31.892755811068714,
+      "groups": {
+        "crypto": {
+          "equity": 10021.638330757341,
+          "bh": 9751.947794584694,
+          "capital": 10000.0
+        },
+        "action": {
+          "equity": 6010.254425053727,
+          "bh": 6044.2558281997335,
+          "capital": 6000.0
+        },
+        "indice": {
+          "equity": 3000.0,
+          "bh": 2998.483743970915,
+          "capital": 3000.0
+        }
+      }
     }
   ],
   "buy_and_hold": {
@@ -1336,7 +1362,7 @@
   ],
   "data_source": "Binance.US + Yahoo Finance",
   "data_errors": {},
-  "last_run_at": "2026-11-24T21:04:53+01:00",
+  "last_run_at": "2026-11-24T21:57:59+01:00",
   "last_prices": {
     "BTCUSDT": 59690.99,
     "ETHUSDT": 1673.66,
@@ -1348,21 +1374,21 @@
     "AVAXUSDT": 6.552,
     "LINKUSDT": 8.904,
     "DOTUSDT": 0.661,
-    "SPX": 7201.7900390625,
-    "NDX": 26247.70703125,
+    "SPX": 7175.72998046875,
+    "NDX": 26091.21484375,
     "CAC40": 8044.22021484375,
-    "AAPL": 352.6499938964844,
-    "NVDA": 153.22500610351562,
-    "MSFT": 494.6199951171875,
-    "TSLA": 384.54998779296875,
+    "AAPL": 351.875,
+    "NVDA": 152.7899932861328,
+    "MSFT": 493.8999938964844,
+    "TSLA": 382.44000244140625,
     "LVMH": 395.29998779296875,
     "TTE": 77.83000183105469
   },
   "summary": {
-    "time": "2026-11-24T21:04:44+01:00",
-    "time_ms": 1795550684470,
+    "time": "2026-11-24T21:57:47+01:00",
+    "time_ms": 1795553867287,
     "equity": 19031.892755811066,
-    "buy_and_hold_equity": 18816.430105019204,
+    "buy_and_hold_equity": 18794.68736675534,
     "capital": 19000.0,
     "realized_pnl": 0.0,
     "unrealized_pnl": 31.892755811068714,
@@ -1374,17 +1400,17 @@
       },
       "action": {
         "equity": 6010.254425053727,
-        "bh": 6056.364656287395,
+        "bh": 6044.2558281997335,
         "capital": 6000.0
       },
       "indice": {
         "equity": 3000.0,
-        "bh": 3008.1176541471173,
+        "bh": 2998.483743970915,
         "capital": 3000.0
       }
     }
   },
   "initial_capital": 19000.0,
   "strategy": "RSI (survente / surachat) (periode=14, bas=30, haut=70) · bougies 1h",
-  "last_processed_candle_close_paris": "2026-11-24T21:00:00+01:00"
+  "last_processed_candle_close_paris": "2026-11-24T21:30:00+01:00"
 }
