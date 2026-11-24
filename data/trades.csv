@@ -1,1 +1,2 @@
 id,time,symbol,label,group,side,price,qty,fee,notional,pnl,strategy,reason
+1,2026-11-24T10:00:00+01:00,TTE,TotalEnergies,action,BUY,77.04000091552734,12.980269835360955,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
