@@ -2854,7 +2854,7 @@
   ],
   "data_source": "Binance.US + Yahoo Finance",
   "data_errors": {},
-  "last_run_at": "2026-11-26T22:00:16+01:00",
+  "last_run_at": "2026-11-26T22:57:20+01:00",
   "last_prices": {
     "BTCUSDT": 60766.22,
     "ETHUSDT": 1704.69,
@@ -2877,8 +2877,8 @@
     "TTE": 78.36000061035156
   },
   "summary": {
-    "time": "2026-11-26T22:00:08+01:00",
-    "time_ms": 1795726808603,
+    "time": "2026-11-26T22:57:09+01:00",
+    "time_ms": 1795730229670,
     "equity": 19254.980146129004,
     "buy_and_hold_equity": 19079.23010159635,
     "capital": 19000.0,
