@@ -4,3 +4,4 @@ id,time,symbol,label,group,side,price,qty,fee,notional,pnl,strategy,reason
 3,2026-11-24T21:00:00+01:00,AVAXUSDT,AVAX,crypto,BUY,6.552,152.62515262515262,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
 4,2026-11-25T15:00:00+01:00,ADAUSDT,ADA,crypto,BUY,0.1374,7278.02037845706,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
 5,2026-11-25T15:00:00+01:00,DOGEUSDT,DOGE,crypto,BUY,0.05291,18900.018900018902,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
+6,2026-11-27T04:00:00+01:00,DOTUSDT,DOT,crypto,SELL,0.689,1545.5950540958268,0.0,1064.9149922720246,64.91499227202462,rsi,RSI au-dessus du seuil haut : l'actif a beaucoup monté
