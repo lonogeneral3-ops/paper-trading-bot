@@ -7,3 +7,6 @@ id,time,symbol,label,group,side,price,qty,fee,notional,pnl,strategy,reason
 6,2026-11-27T04:00:00+01:00,DOTUSDT,DOT,crypto,SELL,0.689,1545.5950540958268,0.0,1064.9149922720246,64.91499227202462,rsi,RSI au-dessus du seuil haut : l'actif a beaucoup monté
 7,2026-11-27T07:00:00+01:00,ADAUSDT,ADA,crypto,SELL,0.15299,7278.02037845706,0.0,1113.4643377001455,113.4643377001455,rsi,RSI au-dessus du seuil haut : l'actif a beaucoup monté
 8,2026-11-27T07:00:00+01:00,DOGEUSDT,DOGE,crypto,SELL,0.05806,18900.018900018902,0.0,1097.3350973350975,97.33509733509754,rsi,RSI au-dessus du seuil haut : l'actif a beaucoup monté
+9,2026-11-27T16:00:00+01:00,BTCUSDT,BTC,crypto,BUY,59206.86,0.016889934713646356,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
+10,2026-11-27T16:00:00+01:00,DOTUSDT,DOT,crypto,BUY,0.659,1615.9559822033757,0.0,1064.9149922720246,,rsi,RSI sous le seuil bas : actif très survendu
+11,2026-11-27T16:00:00+01:00,ETHUSDT,ETH,crypto,BUY,1654.45,0.6044304753845688,0.0,1000.0,,rsi,RSI sous le seuil bas : actif très survendu
